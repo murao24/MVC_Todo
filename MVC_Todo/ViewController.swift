@@ -12,9 +12,9 @@ extension UIColor {
     static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-//    var tableView: UITableView?
+    var tableView: UITableView?
     
     var addButton: UIBarButtonItem!
     
@@ -81,27 +81,26 @@ class ViewController: UIViewController {
     
     
     private func setupLayout() {
-//        self.tableView = {
-//            let tableView = UITableView(frame: self.view.bounds, style: .plain)
-//            tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//            tableView.dataSource = self
-//            tableView.delegate = self
-//            self.view.addSubview(tableView)
-//            return tableView
-//        }()
-        
+        self.tableView = {
+            let tableView = UITableView(frame: self.view.bounds, style: .plain)
+            tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            tableView.dataSource = self
+            tableView.delegate = self
+            self.view.addSubview(tableView)
+            return tableView
+        }()
         
     }
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 11
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
-//        cell.textLabel?.text = "\(indexPath.row)"
-//        return cell
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 11
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
 
 
 }
